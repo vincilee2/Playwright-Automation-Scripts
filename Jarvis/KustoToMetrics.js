@@ -4,7 +4,8 @@ const path = require('path');
 const Account = 'PrivacyProxyMonitor';
 const Namespace = 'MetricsExtension';
 const NewRuleUrl = `https://portal.microsoftgeneva.com/manage/connectors/kusto-to-metrics/account/${Account}/${Namespace}/MetricsExtension/rule/new`;
-(async () => {
+
+module.exports = async function CreateMetric(KustoQuery, RuleName){
     const browser = await chromium.launch({
         headless: false
         //channel: 'msedge'
@@ -22,18 +23,15 @@ const NewRuleUrl = `https://portal.microsoftgeneva.com/manage/connectors/kusto-t
     //await page.waitForURL(NewRuleUrl);
     await page.getByPlaceholder('https://{cluster}.kusto.windows.net').fill('https://kusto.aria.microsoft.com');
     await page.getByPlaceholder('Database').fill('b4af23a6865f491b88747559ad276216');
-    await page.locator(".inputarea").fill(`database("b4af23a6865f491b88747559ad276216").adswidgetmetirc
-| where EventInfo_Time > {startTime} and EventInfo_Time < {endTime}
-| extend d_Domain = Domain
-| summarize m_count = count() by bin(EventInfo_Time,1m), d_Domain`)
+    await page.locator(".inputarea").fill(KustoQuery)
 
     await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByText('Configure Metric Preaggregates').waitFor()
     await page.getByRole('button', { name: 'Next' }).click();
-    await page.getByLabel('Rule Name').fill('TestRule');
+    await page.getByLabel('Rule Name').fill(RuleName);
 
     //await page.getByRole('button', { name: 'Save' }).click();
-
-})();
+};
 
     
 
