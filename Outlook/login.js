@@ -5,8 +5,8 @@ const dotenv = require('dotenv').config( {
     path: path.join(__dirname, '.env')
   } );
 
-  const userName = dotenv.parsed.UserName;
-  const password = dotenv.parsed.Password;
+const userName = dotenv.parsed.UserName;
+const password = dotenv.parsed.Password;
 
 (async () => {
   const browser = await chromium.launch({
