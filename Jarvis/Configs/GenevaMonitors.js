@@ -42,4 +42,12 @@ Monitors = [
     }
 ];
 
+// fs = require('fs')
+// fs.writeFile ("Monitors.json", JSON.stringify(Monitors, null, '\t'), function(err) {
+//     if (err) throw err;
+//     console.log('complete');
+//     }
+// );
+
+
 module.exports =  Monitors;

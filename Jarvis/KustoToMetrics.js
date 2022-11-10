@@ -23,10 +23,12 @@ module.exports = async function CreateMetric(KustoQuery, RuleName){
     //await page.waitForURL(NewRuleUrl);
     await page.getByPlaceholder('https://{cluster}.kusto.windows.net').fill('https://kusto.aria.microsoft.com');
     await page.getByPlaceholder('Database').fill('b4af23a6865f491b88747559ad276216');
-    await page.locator(".inputarea").fill(KustoQuery)
-
+    await page.locator(".inputarea").fill(KustoQuery);
+    //await page.getByRole('button', { name: 'Preview' }).click();
+    //await page.getByText('Query validation succeeded').waitFor();
+    await new Promise(r => setTimeout(r, 1000));
     await page.getByRole('button', { name: 'Next' }).click();
-    await page.getByText('Configure Metric Preaggregates').waitFor()
+    await page.getByText('Configure Metric Preaggregates').waitFor();
     await page.getByRole('button', { name: 'Next' }).click();
     await page.getByLabel('Rule Name').fill(RuleName);
 
