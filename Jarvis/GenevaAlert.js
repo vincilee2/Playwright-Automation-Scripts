@@ -41,7 +41,7 @@ module.exports = async function CreateAlert(Monitor){
     await page.getByRole('row', { name: 'Add Title Auto Enrich Dashboard Configuration' }).getByRole('button', { name: 'Add' }).click();
 
     //await page.getByPlaceholder('Enter Title').waitFor();
-    await page.getByPlaceholder('Enter Title').fill('cc');
+    await page.getByPlaceholder('Enter Title').fill(Monitor.Dashboard.Title);
     await new Promise(r => setTimeout(r, 1000));
     await page.getByRole('button', { name: 'add dashboard level' }).click();
     await page.getByRole('button', { name: 'Select Dashboard ' }).click();

@@ -1,10 +1,6 @@
-const Queries = require('./Configs/KustoToMetrics')
+const Rules = require('./Configs/KustoToMetricRules')
 
 var CreateMetric = require('./KustoToMetrics');
 
-var handlers = Queries.map(query => CreateMetric(query.Query, query.RuleName))
+var handlers = Rules.map(rule => CreateMetric(rule))
 Promise.all(handlers);
-// for (query in Queries)
-// {
-//     CreateMetric(query)
-// }
