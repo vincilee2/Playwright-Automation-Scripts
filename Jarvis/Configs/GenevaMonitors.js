@@ -1,97 +1,100 @@
 
 Monitors = [
-    // {
-    //     MonitorName:'FullJsAdsCount Abnormal',
-    //     Description: 'FullJsAdsCount drop to 0',
-    //     TimeSeries: {
-    //         Name:'AdsCount',
-    //         NameSpace:'ProxyServiceMetrics',
-    //         Metric:'FullJsAdsCount'
-    //     },
-    //     Alert: {
-    //         Name:'FullJsAdsCount Abnormal'
-    //     },
-    //     Dashboard: {
-    //         Title:'FUll Js'
-    //     },
-    //     Expression: {
-    //         Name:'expression'
-    //     },
-    //     ICM: {
-    //         Title: 'Full Js Ads count drop to 0',
-    //         Message:'Full Js Ads count drop to 0',
-    //         TSG:'tsg'
-    //     }
-    // },
-    // {
-    //     MonitorName:'FullJsAdsError',
-    //     Description: 'Js Ads got errors',
-    //     TimeSeries: {
-    //         Name:'FullJsAdsErrorCount',
-    //         NameSpace:'ProxyServiceMetrics',
-    //         Metric:'FullJsAdsErrorCount'
-    //     },
-    //     Alert: {
-    //         Name:'FullJsAdsErrorCount alert'
-    //     },
-    //     Dashboard: {
-    //         Title:'FUll Js'
-    //     },
-    //     Expression: {
-    //         Name:'expression'
-    //     },
-    //     ICM: {
-    //         Title: 'Full Js Ads got errors',
-    //         Message:'Warning',
-    //         TSG:'tsg'
-    //     }
-    // },
-    // {
-    //     MonitorName:'FullJs Latency too high',
-    //     Description: 'FullJs Latency too high',
-    //     TimeSeries: {
-    //         Name:'FullJsAdsRequestTime',
-    //         NameSpace:'ProxyServiceMetrics',
-    //         Metric:'FullJsAdsRequestTime_p90'
-    //     },
-    //     Alert: {
-    //         Name:'FullJsAdsRequestTime_p90 alert'
-    //     },
-    //     Dashboard: {
-    //         Title:'FUll Js'
-    //     },
-    //     Expression: {
-    //         Name:'expression'
-    //     },
-    //     ICM: {
-    //         Title: 'FullJs Latency too high',
-    //         Message:'Warning',
-    //         TSG:'tsg'
-    //     }
-    // },
     {
-        MonitorName:'TelemetryJsAdsErrorCount',
-        Description: 'Telemetry Js Ads got errors',
+        Account: 'AdsJavaScriptSolution',
+        MonitorName:'FullJsAvailability',
+        Description: 'FullJs request number drop to 0',
         TimeSeries: {
-            Name:'TelemetryJsAdsErrorCount',
-            NameSpace:'ProxyServiceMetrics',
-            Metric:'TelemetryJsAdsErrorCount'
+            Name:'RequestCount',
+            NameSpace:'AdsJsMetrics',
+            Metric:'FullJsRequestCount'
         },
         Alert: {
-            Name:'TelemetryJsAdsErrorCount alert'
+            Name:'FullJsAvailability'
         },
         Dashboard: {
-            Title:'Telemetry Js'
+            Title:'Full Js'
         },
         Expression: {
             Name:'expression'
         },
         ICM: {
-            Title: 'Telemetry Js Ads got errors',
-            Message:'Warning',
+            Title: '[AdsDEFD] Full Js request number below threshold',
+            Message:'Full Js unhealthy using data from {Monitor.DataStartTime} to {Monitor.DataEndTime}',
             TSG:'tsg'
         }
-    }
+    },
+    {
+        Account: 'AdsJavaScriptSolution',
+        MonitorName:'FullJsException',
+        Description: 'Full got exception',
+        TimeSeries: {
+            Name:'FullJsAdsExceptionCount',
+            NameSpace:'AdsJsMetrics',
+            Metric:'FullJsAdsExceptionCount'
+        },
+        Alert: {
+            Name:'FullJsAdsExceptionCount alert'
+        },
+        Dashboard: {
+            Title:'Full Js'
+        },
+        Expression: {
+            Name:'expression'
+        },
+        ICM: {
+            Title: '[AdsDEFD] Full Js exception number is above threshold',
+            Message:'Full Js exception number is above threshold',
+            TSG:'tsg'
+        }
+    },
+    {
+        Account: 'AdsJavaScriptSolution',
+        MonitorName:'FullJsRenderTime',
+        Description: 'FullJs RenderTime is above threshold',
+        TimeSeries: {
+            Name:'FullJsAdsRenderTime',
+            NameSpace:'AdsJsMetrics',
+            Metric:'FullJsAdsRenderTime_p50'
+        },
+        Alert: {
+            Name:'FullJsAdsRenderTime_p50 alert'
+        },
+        Dashboard: {
+            Title:'Full Js'
+        },
+        Expression: {
+            Name:'expression'
+        },
+        ICM: {
+            Title: '[AdsDEFD] FullJs RenderTime is above threshold',
+            Message:'RenderTime is above threshold using data from {Monitor.DataStartTime} to {Monitor.DataEndTime}',
+            TSG:'tsg'
+        }
+    },
+    // {
+    //     MonitorName:'TelemetryJsAdsErrorCount',
+    //     Description: 'Telemetry Js Ads got errors',
+    //     TimeSeries: {
+    //         Name:'TelemetryJsAdsErrorCount',
+    //         NameSpace:'AdsJsMetrics',
+    //         Metric:'TelemetryJsAdsErrorCount'
+    //     },
+    //     Alert: {
+    //         Name:'TelemetryJsAdsErrorCount alert'
+    //     },
+    //     Dashboard: {
+    //         Title:'Telemetry Js'
+    //     },
+    //     Expression: {
+    //         Name:'expression'
+    //     },
+    //     ICM: {
+    //         Title: 'Telemetry Js Ads got errors',
+    //         Message:'Warning',
+    //         TSG:'tsg'
+    //     }
+    // }
 ];
 
 // fs = require('fs')
