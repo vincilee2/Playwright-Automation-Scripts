@@ -9,7 +9,7 @@ module.exports = async function CreateAlert(Monitor){
     const context = await browser.newContext({storageState: path.join(__dirname, 'Jarvis.json')});
     context.setDefaultTimeout(600000)
     const page = await context.newPage();
-    await page.goto('https://portal.microsoftgeneva.com/manage/monitors?account=PrivacyProxyMonitor');
+    await page.goto(`https://portal.microsoftgeneva.com/manage/monitors?account=${Monitor.Account}`);
     await page.getByRole('menuitem', { name: 'NewMonitor' }).click();
     await page.getByRole('button', {name:'Ok'}).click();
     await page.getByRole('textbox', { name: 'Monitor name' }).fill(Monitor.MonitorName);
@@ -41,11 +41,11 @@ module.exports = async function CreateAlert(Monitor){
     await page.getByRole('row', { name: 'Add Title Auto Enrich Dashboard Configuration' }).getByRole('button', { name: 'Add' }).click();
 
     //await page.getByPlaceholder('Enter Title').waitFor();
-    await page.getByPlaceholder('Enter Title').fill('cc');
+    await page.getByPlaceholder('Enter Title').fill(Monitor.Dashboard.Title);
     await new Promise(r => setTimeout(r, 1000));
     await page.getByRole('button', { name: 'add dashboard level' }).click();
     await page.getByRole('button', { name: 'Select Dashboard ' }).click();
-    await page.getByRole('button', { name: 'JS Monitor' }).click();
+    await page.getByRole('button', { name: 'Full Js' }).click();
     await page.getByRole('button', { name: 'Done' }).click();
     //
     await page.getByRole('button', { name: 'Next: Alert Reaction' }).click();
