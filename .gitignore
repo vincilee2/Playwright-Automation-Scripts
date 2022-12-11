@@ -2,3 +2,4 @@ node_modules
 *screenshots
 .env
 Jarvis.json
+**/Auth.json
