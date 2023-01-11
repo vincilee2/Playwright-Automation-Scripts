@@ -67,6 +67,6 @@ async function buy(page, url)
         // }
     });
     const page = await context.newPage();
-    await cleanCart(page, new Date(Date.parse('2022-12-12T12:00:00.500')))
+    await cleanCart(page, new Date(Date.parse('2022-12-16T20:00:00.10')))
     
 })();

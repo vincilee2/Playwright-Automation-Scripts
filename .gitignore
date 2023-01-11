@@ -4,3 +4,4 @@ node_modules
 Jarvis.json
 **/Auth.json
 *recordings
+.DS_Store
