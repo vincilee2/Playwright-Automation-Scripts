@@ -7,7 +7,7 @@ async function executeAt(act, targetTime)
 {
     console.log("should act at " + targetTime)
     let start = Date.now();
-    waitForTime = targetTime - start - 100;
+    waitForTime = targetTime - start;
     console.log("should in prepare stage after " + waitForTime);
     if (waitForTime > 0) {await waitForTimeout(waitForTime);}
     while (true) {

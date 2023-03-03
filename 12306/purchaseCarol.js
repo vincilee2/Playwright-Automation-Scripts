@@ -12,19 +12,18 @@ const { chromium } = require('playwright');
         // }
     });
     const page = await context.newPage();
-    //const ticketT168 = 'ticket_570000T1680M_05_20'
-    const ticketG896 = 'ticket_5u0000G89600_03_08'
+    const ticket = 'ticket_39000D30480M_03_11'
     const date = '2023-01-28'
-    await page.goto(`https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=大冶北,DBN&ts=北京,BJP&date=${date}&flag=N,N,Y`);
+    await page.goto(`https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=麻城,MCN&ts=上海,SHH&date=${date}&flag=N,N,Y`);
 
     await page.waitForURL('https://kyfw.12306.cn/otn/**')
-    let targetTime = new Date(Date.parse('2023-01-14T18:00:00.00'))
+    let targetTime = new Date(Date.parse('2023-01-14T15:00:00.00'))
     await executeAt(async () => {
-        await checkPreOrderState(ticketG896, page)
+        await checkPreOrderState(ticket, page)
     }, targetTime);
-    console.log('条件满足')
-    await page.locator(`#${ticketG896}`).getByText('预订').click();
-    await page.getByLabel('李文奇').nth(0).check();
+    
+    await page.locator(`#${ticket}`).getByText('预订').click();
+    await page.getByLabel('赵玉姣').nth(0).check();
     await page.getByRole('link', { name: '提交订单' }).click();
     await page.getByRole('link', { name: '确认' }).click();
 
