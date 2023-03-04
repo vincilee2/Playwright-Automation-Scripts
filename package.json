@@ -2,6 +2,7 @@
   "dependencies": {
     "alert": "^5.1.1",
     "dotenv": "^16.0.3",
-    "playwright": "^1.27.1"
+    "playwright": "^1.27.1",
+    "turndown": "^7.1.1"
   }
 }
